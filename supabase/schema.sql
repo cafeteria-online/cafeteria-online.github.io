@@ -63,6 +63,14 @@ alter table public.settings enable row level security;
 alter table public.sections enable row level security;
 alter table public.products enable row level security;
 
+-- Permisos explícitos de la Data API (Supabase ya no los dará por defecto).
+-- Definen a qué tablas llega cada rol; las políticas de abajo limitan las filas.
+grant usage on schema public to anon, authenticated;
+grant select on table public.settings, public.sections, public.products to anon, authenticated;
+grant insert, update, delete on table public.settings, public.sections, public.products to authenticated;
+grant select on table public.admins to authenticated;
+grant execute on function public.is_admin() to anon, authenticated;
+
 -- Lectura pública del menú y la configuración
 drop policy if exists "lectura publica" on public.settings;
 create policy "lectura publica" on public.settings for select using (true);

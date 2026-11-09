@@ -1,12 +1,12 @@
 // Capa de datos. Tiene dos modos con la misma interfaz:
-//  - "supabase": datos reales (cuando existen VITE_SUPABASE_URL y VITE_SUPABASE_ANON_KEY).
+//  - "supabase": datos reales (cuando existen VITE_SUPABASE_URL y VITE_SUPABASE_PUBLISHABLE_KEY).
 //  - "demo": sin backend; los cambios se guardan solo en este navegador (localStorage).
 import { createClient } from '@supabase/supabase-js'
 import { seedSettings, seedSections, seedProducts } from '../data/seed.js'
 import { blobToDataUrl } from './image.js'
 
 const URL_ = import.meta.env.VITE_SUPABASE_URL
-const KEY = import.meta.env.VITE_SUPABASE_ANON_KEY
+const KEY = import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY
 const BUCKET = 'imagenes'
 
 export const supabase = URL_ && KEY ? createClient(URL_, KEY) : null

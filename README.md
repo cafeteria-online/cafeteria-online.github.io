@@ -40,11 +40,11 @@ Abre http://localhost:5173. Sin archivo `.env`, arranca en modo demostración.
    ```
 6. **Desactiva el registro público:** *Authentication → Sign In / Providers → Email* → desactiva
    *Allow new users to sign up*. Así nadie más puede crear cuentas.
-7. Copia los datos de conexión en *Project Settings → API*:
+7. Copia los datos de conexión desde el botón **Connect** del proyecto (o *Settings → API Keys*):
    - `Project URL` → `VITE_SUPABASE_URL`
-   - `anon public` key → `VITE_SUPABASE_ANON_KEY`
+   - Clave publicable (`sb_publishable_...`) → `VITE_SUPABASE_PUBLISHABLE_KEY`
 
-   ⚠️ La clave **`service_role` nunca** se usa en este proyecto ni se comparte.
+   ⚠️ La clave **secreta (`sb_secret_...`) nunca** se usa en este proyecto ni se comparte.
 
 Para probar en local con Supabase, copia `.env.example` como `.env` y pega esos dos valores.
 El archivo `.env` está en `.gitignore` y no se sube al repositorio.
@@ -53,13 +53,13 @@ El archivo `.env` está en `.gitignore` y no se sube al repositorio.
 
 1. En GitHub: **Settings → Secrets and variables → Actions → New repository secret** y crea:
    - `VITE_SUPABASE_URL`
-   - `VITE_SUPABASE_ANON_KEY`
+   - `VITE_SUPABASE_PUBLISHABLE_KEY`
 2. **Settings → Pages → Build and deployment → Source: GitHub Actions**.
 3. Cada `push` a `main` publica la página automáticamente (pestaña **Actions**).
-   La dirección será `https://<usuario>.github.io/cafeteria-online/`.
+   La dirección será `https://cafeteria-online.github.io/`.
 
 > GitHub Pages gratuito requiere que el repositorio sea público. No hay datos sensibles en el código:
-> la `anon key` es pública por diseño y la seguridad la aplican las reglas RLS de la base de datos.
+> la clave publicable es pública por diseño y la seguridad la aplican las reglas RLS de la base de datos.
 
 ## Estructura
 
