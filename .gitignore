@@ -1,0 +1,21 @@
+# Dependencias y compilados
+node_modules/
+dist/
+
+# Variables de entorno (NUNCA subir claves)
+.env
+.env.*
+!.env.example
+
+# Supabase CLI local
+supabase/.temp/
+supabase/.branches/
+
+# Sistema / editores
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/
+.idea/
+.claude/
+*.log
